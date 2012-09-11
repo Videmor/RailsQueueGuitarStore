@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @guitar.model %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @guitar.year %>
+</p>
+
+
+<%= link_to 'Edit', edit_guitar_path(@guitar) %> |
+<%= link_to 'Back', guitars_path %>
