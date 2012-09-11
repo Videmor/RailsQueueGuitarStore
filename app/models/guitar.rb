@@ -15,7 +15,7 @@ class Guitar < ActiveRecord::Base
 
     def search_guitar_reviews
       reviews_search = GuitarReviewsSearch.new(self.to_s)
-      reviews_search.run
+      Rails.queue.push(reviews_search)
     end
 
 end

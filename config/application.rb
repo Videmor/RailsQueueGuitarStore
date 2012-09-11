@@ -51,5 +51,12 @@ module GuitarStore
 
     # Enable app-wide asynchronous ActionMailer.
     # config.action_mailer.async = true
+    
+    initializer 'awesome queue' do |app|
+      p "Initializing ........"
+      app.queue_consumer = config.queue_consumer.start(app.queue)
+      at_exit { app.queue_consumer.shutdown }
+    end
+
   end
 end
