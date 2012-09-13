@@ -51,7 +51,6 @@ GuitarStore::Application.configure do
 
     def pop
       if job = read_from_file
-        clear_file
         job
       else
         Struct.new(:run).new(true)
@@ -74,6 +73,8 @@ GuitarStore::Application.configure do
             Marshal.load(file)
           end
         rescue EOFError
+        ensure
+          clear_file
         end
       end
 
